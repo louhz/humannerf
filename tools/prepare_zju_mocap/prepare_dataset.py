@@ -20,11 +20,16 @@ from absl import flags
 FLAGS = flags.FLAGS
 
 flags.DEFINE_string('cfg',
-                    '387.yaml',
+                    '393.yaml',
                     'the path of config file')
 
 MODEL_DIR = '../../third_parties/smpl/models'
 
+
+# to align the ground plan to x-z plane
+zju_to_nerf_rot = np.array([[1, 0, 0],
+                            [0, 0,-1],
+                            [0, 1, 0]], dtype=np.float32)
 
 def parse_config():
     config = None
