@@ -49,7 +49,7 @@ def _update_extrinsics(
 
     
 def get_camrot(campos, lookat=None, inv_camera=False):
-    r""" Compute rotation part of extrinsic matrix from camera posistion and
+    r""" Compute rotation part of extrinsic matrix from camera position and
          where it looks at.
 
     Args:
