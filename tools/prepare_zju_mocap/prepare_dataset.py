@@ -20,7 +20,7 @@ from absl import flags
 FLAGS = flags.FLAGS
 
 flags.DEFINE_string('cfg',
-                    '393.yaml',
+                    '387.yaml',
                     'the path of config file')
 
 MODEL_DIR = '../../third_parties/smpl/models'
@@ -58,7 +58,7 @@ def get_mask(subject_dir, img_name):
     msk_cihp = (msk_cihp != 0).astype(np.uint8)
 
     msk = (msk | msk_cihp).astype(np.uint8)
-    msk[msk == 1] = 255
+    #msk[msk == 1] = 255 # original
 
     return msk
 
@@ -97,6 +97,7 @@ def main(argv):
     # load image paths
     img_path_frames_views = annots['ims']
     img_paths = np.array([
+
         np.array(multi_view_paths['ims'])[select_view] \
             for multi_view_paths in img_path_frames_views
     ])
@@ -118,7 +119,8 @@ def main(argv):
     mesh_infos = {}
     all_betas = []
     for idx, ipath in enumerate(tqdm(img_paths)):
-        out_name = 'frame_{:06d}'.format(idx)
+        #out_name = 'frame_{:06d}'.format(idx) #original
+        out_name = 'r_{:03d}'.format(idx)
 
         img_path = os.path.join(subject_dir, ipath)
     
@@ -165,7 +167,7 @@ def main(argv):
         # load and write mask
         mask = get_mask(subject_dir, ipath)
         save_image(to_3ch_image(mask), 
-                   os.path.join(out_mask_dir, out_name+'.png'))
+                   os.pathrays_intersect_3d_bbox.join(out_mask_dir, out_name+'.png'))
 
         # write image
         out_image_path = os.path.join(out_img_dir, '{}.png'.format(out_name))
