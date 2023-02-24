@@ -120,7 +120,7 @@ def main(argv):
     all_betas = []
     for idx, ipath in enumerate(tqdm(img_paths)):
         #out_name = 'frame_{:06d}'.format(idx) #original
-        out_name = 'r_{:03d}'.format(idx)
+        out_name = 'frame_{:06d}'.format(idx)
 
         img_path = os.path.join(subject_dir, ipath)
     
