@@ -58,7 +58,7 @@ def get_mask(subject_dir, img_name):
     msk_cihp = (msk_cihp != 0).astype(np.uint8)
 
     msk = (msk | msk_cihp).astype(np.uint8)
-    #msk[msk == 1] = 255 # original
+    msk[msk == 1] = 255 # original
 
     return msk
 
