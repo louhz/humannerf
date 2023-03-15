@@ -167,7 +167,7 @@ def main(argv):
         # load and write mask
         mask = get_mask(subject_dir, ipath)
         save_image(to_3ch_image(mask), 
-                   os.pathrays_intersect_3d_bbox.join(out_mask_dir, out_name+'.png'))
+                   os.path.join(out_mask_dir, out_name+'.png'))
 
         # write image
         out_image_path = os.path.join(out_img_dir, '{}.png'.format(out_name))
